@@ -1,0 +1,26 @@
+from django.db import models
+import os
+
+
+class User(models.Model):
+    #dados fixos
+    id_user = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    idade = models.IntegerField()
+    sexo = models.CharField(max_length=1, choices=[('M', 'Masculino'), ('F', 'Feminino'), ('O', 'Outro')])
+
+    #variaveis
+    #listar de acordo com db
+
+    def __str__(self):
+        return self.nome
+
+class Adm(models.Model):
+    id_administracao = models.AutoField(primary_key=True)
+    nome = models.CharField(max_length=100)
+    email = models.EmailField(unique=True)
+    idade = models.IntegerField()
+
+    def __str__(self):
+        return self.nome

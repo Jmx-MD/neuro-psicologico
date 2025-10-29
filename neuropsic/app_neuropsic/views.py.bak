@@ -1,0 +1,58 @@
+from django.shortcuts import render
+from django.http import JsonResponse
+from django.views.decorators.csrf import csrf_exempt
+from .models import User, Adm
+from supabase import create_client, Client
+import os
+from dotenv import load_dotenv
+import json
+
+#setup do supabase - adm = ID: 10
+load_dotenv() #variaveis de ambiente
+supabase_url = os.getenv('https://zrnaighhtwddnibngduv.supabase.co')
+supabase_key = os.getenv('Alchieri2025.')
+supabase: Client = create_client(supabase_url, supabase_key)
+
+def home(request):
+    return render(request, 'usuarios/home.html')
+
+def novousuario(request):
+    #dados fixos
+    novo_user = User()
+    novo_user.nome = request.POST.get('nome')
+    novo_user.sexo = request.POST.get('sexo')
+    
+    #atualizaveis
+    novo_user.idade = request.POST.get('idade')
+    novo_user.email = request.POST.get('email')
+    
+    #variaveis iniciais
+    
+    novo_user.save() #salva no db
+    usuarios = { 'novousuario': User.objects.all()}
+    return render(request, 'usuarios/usuarios.html', {'user': novo_user})
+    
+
+
+#func grok
+@csrf_exempt  # Disable CSRF for simplicity (enable in production)
+def submit_form(request):
+    if request.method == 'POST':
+        try:
+            data = json.loads(request.body)
+            name = data.get('name')
+            email = data.get('email')
+
+            if not name or not email:
+                return JsonResponse({'error': 'Name and email are required'}, status=400)
+
+            # Insert into Supabase
+            response = supabase.table('users').insert({'name': name, 'email': email}).execute()
+
+            if hasattr(response, 'error') and response.error:
+                return JsonResponse({'error': 'Failed to save data'}, status=500)
+
+            return JsonResponse({'message': 'Data saved successfully', 'data': response.data}, status=200)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=500)
+    return JsonResponse({'error': 'Invalid request method'}, status=405)

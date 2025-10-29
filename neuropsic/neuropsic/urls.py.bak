@@ -1,0 +1,9 @@
+from django.urls import path
+from app_neuropsic import views
+
+urlpatterns = [
+    #path('https://neuropsicologica.psc.br/a-pesquisa/termo-consentimento-idoso/',views.termo_consentimento, name='termo_consentimento'),
+    path('',views.home, name='home'),
+    path('novousuario/', views.novousuario, name='novousuario'),
+    path('submit_form/', views.submit_form, name='submit_form'),    
+]
