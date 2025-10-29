@@ -3,8 +3,6 @@
 ## Visão geral
 Este projeto Django foi refatorado para usar **Supabase Postgres** como banco principal e expor uma API REST via **Django REST Framework**.
 
-API = neuropsic
-
 ## Configuração rápida
 1. Ative arquivo venv e crie um ambiente virtual
    ```bash
