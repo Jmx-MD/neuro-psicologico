@@ -62,7 +62,7 @@ class User(models.Model):
         max_length=80,
         choices=[
             ('Mora sozinho(a)', 'Mora sozinho(a)'),
-            ('Mora com cônjugue/companheiro(a)', 'Mora com cônjugue/companheiro(a)'),
+            ('Mora com cônjuge/companheiro(a)', 'Mora com cônjugue/companheiro(a)'),
             ('Mora com filhos', 'Mora com filhos'),
             ('Outro arranjo', 'Outro arranjo'),
             ('Mora em instituição (asilo, casa de repouso,ILPI)', 'Mora em instituição (asilo, casa de repouso,ILPI)'),
@@ -545,9 +545,9 @@ class User(models.Model):
     atividadesFisicasRecreativas = MultiSelectField(
         choices=[
             ('Caminhadas ou passeios ao ar livre', 'Caminhadas ou passeios ao ar livre'),
-            ('Jardinagem ou cuidar de plantas', 'Jardinagem ou cuidar de plantas'),
-            ('Exercícios em grupo (dança, hidroginśtica, yoga)', 'Exercícios em grupo (dança, hidroginśtica, yoga)'),
-            ('Praticar esportes recreativos (bocha, vôlei, bocha, ciclismo, etc.)', 'Praticar esportes recreativos (bocha, vôlei, bocha, ciclismo, etc.)'),
+            ('Jardinagem, horta ou cuidados com plantas', 'Jardinagem, horta ou cuidados com plantas'),
+            ('Exercícios em grupo (dança, hidroginástica, yoga)', 'Exercícios em grupo (dança, hidroginśtica, yoga)'),
+            ('Esportes recreativos (futebol, vôlei, bocha, ciclismo, etc.)', 'Esportes recreativos (futebol, vôlei, bocha, ciclismo, etc.)'),
             ('Nenhuma dessas', 'Nenhuma dessas'),
         ],
         null=False,
