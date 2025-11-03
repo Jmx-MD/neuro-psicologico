@@ -16,5 +16,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('', health_check),
-    path('api/criar-usuario/', views.criar_usuario, name='criar_usuario'),
+    path('api/criar-usuario/', views.novousuario, name='criar_usuario'),
 ]

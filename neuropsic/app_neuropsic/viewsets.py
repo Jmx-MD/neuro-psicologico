@@ -12,6 +12,7 @@ class UserViewSet(viewsets.ModelViewSet):
     serializer_class = UserSerializer
     permission_classes = [permissions.AllowAny]  # CHANGE to IsAuthenticated in production
 
+
 class AdmViewSet(viewsets.ModelViewSet):
     queryset = Adm.objects.all().order_by('id_administracao')
     serializer_class = AdmSerializer

@@ -5,14 +5,14 @@ from multiselectfield import MultiSelectField
 class User(models.Model):
     # dados fixos
     id_user = models.AutoField(primary_key=True)
-    nome = models.CharField(max_length=100)
-    data_nascimento = models.DateField()
+    # nome = models.CharField(max_length=100)
+    # data_nascimento = models.DateField()
     sexo = models.CharField(max_length=1, choices=[('M', 'Masculino'), ('F', 'Feminino')])
     
     
     #atualizaveis
-    email = models.EmailField(unique=True)
-    senha = models.CharField(max_length=128)
+    # email = models.EmailField(unique=True)
+    # senha = models.CharField(max_length=128)
     
     
     #extra_data = models.JSONField(default=dict, blank=True)

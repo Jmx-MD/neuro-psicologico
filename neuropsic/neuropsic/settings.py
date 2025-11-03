@@ -6,7 +6,25 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env_path = BASE_DIR / '.env'
 load_dotenv(dotenv_path=env_path)
 
+ALLOWED_HOSTS=['127.0.0.1', '*']
+
 # Configuração do banco de dados Supabase
+
+
+INSTALLED_APPS = [
+    'corsheaders',
+    'django.contrib.admin',
+    'django.contrib.auth',
+    'django.contrib.contenttypes',
+    'django.contrib.sessions',
+    'django.contrib.messages',
+    'django.contrib.staticfiles',
+    'rest_framework',
+    'app_neuropsic'
+]
+
+
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
@@ -20,6 +38,8 @@ DATABASES = {
         },
     }
 }
+
+ROOT_URLCONF="neuropsic.urls"
 
 
 DATABASES = {
@@ -72,3 +92,43 @@ REST_FRAMEWORK = {
         'rest_framework.renderers.JSONRenderer',
     ),
 }
+
+
+MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
+    'django.middleware.security.SecurityMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
+    'django.middleware.csrf.CsrfViewMiddleware',
+    'django.contrib.auth.middleware.AuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+]
+
+
+TEMPLATES = [
+    {
+        'BACKEND': 'django.template.backends.django.DjangoTemplates',
+        'DIRS': [],
+        'APP_DIRS': True,
+        'OPTIONS': {
+            'context_processors': [
+                'django.template.context_processors.request',
+                'django.contrib.auth.context_processors.auth',
+                'django.contrib.messages.context_processors.messages'
+            ]
+        }
+    }
+]
+
+DEBUG=True
+
+WSGI_APPLICATION = 'neuropsic.wsgi.application'
+
+SECRET_KEY="7-bn)0xuz=b+as*9i261rs3z567%g3z2^qguzvts1h645l$8bb"
+
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:5173',
+]

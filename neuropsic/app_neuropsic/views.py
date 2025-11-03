@@ -6,18 +6,18 @@ from supabase import create_client, Client
 import os
 from dotenv import load_dotenv
 import json
-import SUPABASE_URL, SUPABASE_KEY
-
-
 load_dotenv() #variaveis de ambiente
-supabase_url = os.getenv(SUPABASE_URL)
-supabase_key = os.getenv(SUPABASE_KEY)
+
+
+supabase_url = os.getenv('SUPABASE_URL')
+supabase_key = os.getenv('SUPABASE_ANON_KEY')
 supabase: Client = create_client(supabase_url, supabase_key)
 
 def home(request):
     return render(request, 'usuarios/home.html')
 
 def novousuario(request):
+    breakpoint()
     #dados fixos
     novo_user = User()
     novo_user.nome = request.POST.get('nome')
