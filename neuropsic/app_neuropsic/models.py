@@ -101,7 +101,6 @@ class User(models.Model):
     )
     
     fontesRenda = models.CharField(
-        max_length=60,
         choices=[
             ('Aposentadoria/pensão', 'Aposentadoria/pensão'),
             ('Trabalho remunerado', 'Trabalho remunerado'),
@@ -113,7 +112,6 @@ class User(models.Model):
     )
 
     planosSaude = models.CharField(
-        max_length=30,
         choices=[
             ('Apenas sistema público (SUS)', 'Apenas sistema público (SUS)'),
             ('Apenas plano privado', 'Apenas plano privado'),
