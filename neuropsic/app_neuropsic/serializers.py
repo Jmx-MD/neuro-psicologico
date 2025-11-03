@@ -25,4 +25,4 @@ class UserSerializer(serializers.ModelSerializer):
 class AdmSerializer(serializers.ModelSerializer):
     class Meta:
         model = Adm
-        fields = ['id_administracao', 'nome', 'email', 'senha', 'data_nascimento']
+        fields = '__all__'

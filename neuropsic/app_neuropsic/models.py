@@ -30,7 +30,7 @@ class User(models.Model):
     )
 
     # === DADOS SOCIODEMOGRÁFICOS (ordem exata da sua lista) ===
-    est_civil = models.CharField(
+    estadosCivis = models.CharField(
         max_length=50,
         choices=[
             ('Solteiro(a)', 'Solteiro(a)'),
@@ -46,23 +46,23 @@ class User(models.Model):
         max_length=70,
         choices=[
             ('Nenhuma escolaridade formal', 'Nenhuma escolaridade formal'),
-            ('Ensino Fundamental Incompleto', 'Ensino Fundamental Incompleto'),
-            ('Ensino Fundamental Completo', 'Ensino Fundamental Completo'),
-            ('Ensino Médio Incompleto', 'Ensino Médio Incompleto'),
-            ('Ensino Médio Completo', 'Ensino Médio Completo'),
-            ('Ensino Superior Incompleto', 'Ensino Superior Incompleto'),
-            ('Ensino Superior Completo', 'Ensino Superior Completo'),
-            ('Pós-graduação/ Mestrado/ Doutorado', 'Pós-graduação/ Mestrado/ Doutorado'),
+            ('Ensino fundamental incompleto', 'Ensino fundamental incompleto'),
+            ('Ensino fundamental completo', 'Ensino Fundamental completo'),
+            ('Ensino médio incompleto', 'Ensino médio incompleto'),
+            ('Ensino médio completo', 'Ensino médio completo'),
+            ('Ensino superior incompleto', 'Ensino superior incompleto'),
+            ('Ensino superior completo', 'Ensino superior completo'),
+            ('Pós-graduação', 'Pós-graduação'),
         ],
         null=False,
         verbose_name="Escolaridade"
     )
 
-    st_moradia = models.CharField(
+    moradias = models.CharField(
         max_length=80,
         choices=[
             ('Mora sozinho(a)', 'Mora sozinho(a)'),
-            ('Mora com conjugue/ parceiro(a)', 'Mora com conjugue/ parceiro(a)'),
+            ('Mora com cônjugue/companheiro(a)', 'Mora com cônjugue/companheiro(a)'),
             ('Mora com filhos', 'Mora com filhos'),
             ('Outro arranjo', 'Outro arranjo'),
             ('Mora em instituição (asilo, casa de repouso,ILPI)', 'Mora em instituição (asilo, casa de repouso,ILPI)'),
@@ -71,59 +71,63 @@ class User(models.Model):
         verbose_name="Situação de Moradia"
     )
 
-    residencia = models.CharField(
+    residencias = models.CharField(
         max_length=60,
         choices=[
             ('Zona urbana', 'Zona urbana'),
             ('Zona rural', 'Zona rural'),
-            ('Zona periurbana (transição entre zona urbana e rural)', 'Zona periurbana (transição entre zona urbana e rural)'),
+            ('Zona periurbana (transição)', 'Zona periurbana (transição)'),
         ],
         null=False,
         verbose_name="Área de Residência"
     )
 
-    st_ocupacional = models.CharField(
+    ocupacoes = models.CharField(
         max_length=50,
         choices=[
             ('Aposentado(a)', 'Aposentado(a)'),
-            ('Trabalha atualmente', 'Trabalha atualmente'),
+            ('Trabalhador(a) ativo(a)', 'Trabalhador(a) ativo(a)'),
             ('Desempregado(a)', 'Desempregado(a)'),
-            ('Do lar', 'Do lar'),
+            ('Trabalho voluntário', 'Trabalho voluntário'),
             ('Outro', 'Outro'),
         ],
         null=False,
         verbose_name="Situação Ocupacional"
     )
-
-    fonte_renda = models.CharField(
+    
+    rendaMensal = models.IntegerField(
+        null=False,
+        verbose_name='Renda Mensal (em salários mínimos)'
+    )
+    
+    fontesRenda = models.CharField(
         max_length=60,
         choices=[
-            ('Aposentadoria/Pensão', 'Aposentadoria/Pensão'),
-            ('Salário', 'Salário'),
-            ('Benefício social (BPC, Bolsa Família, etc.)', 'Benefício social (BPC, Bolsa Família, etc.)'),
-            ('Auxílio de familiares', 'Auxílio de familiares'),
-            ('Não possui renda', 'Não possui renda'),
+            ('Aposentadoria/pensão', 'Aposentadoria/pensão'),
+            ('Trabalho remunerado', 'Trabalho remunerado'),
+            ('Benefícios sociais (ex.: Programas governamentais como Bolsa Família ou equivalente)', 'Benefícios sociais (ex.: Programas governamentais como Bolsa Família ou equivalente)'),
+            ('Outro', 'Outro'),
         ],
         null=False,
         verbose_name="Fonte de Renda"
     )
 
-    pl_saude = models.CharField(
+    planosSaude = models.CharField(
         max_length=30,
         choices=[
-            ('SUS', 'SUS'),
-            ('Plano privado', 'Plano privado'),
-            ('Particular', 'Particular'),
-            ('Não possui', 'Não possui'),
+            ('Apenas sistema público (SUS)', 'Apenas sistema público (SUS)'),
+            ('Apenas plano privado', 'Apenas plano privado'),
+            ('Sistema público + plano privado', 'Sistema público + plano privado'),
+            ('Nenhum', 'Nenhum'),
         ],
         null=False,
         verbose_name="Plano de Saúde"
     )
 
-    cond_saude = models.CharField(
+    condicoesSaude = models.CharField(
         max_length=20,
         choices=[
-            ('Ótima', 'Ótima'),
+            ('Muito boa', 'Muito boa'),
             ('Boa', 'Boa'),
             ('Regular', 'Regular'),
             ('Ruim', 'Ruim'),
@@ -133,29 +137,30 @@ class User(models.Model):
         verbose_name="Condição de Saúde Autopercebida"
     )
 
-    # === HISTÓRICO MÉDICO ===
-    hist_doencas = MultiSelectField(
+    # === ETAPA 2: HISTÓRICO MÉDICO E COMPORTAMENTAL ===
+    doencasCronicas = MultiSelectField(
         choices=[
             ('Hipertensão arterial', 'Hipertensão arterial'),
-            ('Diabetes', 'Diabetes'),
-            ('Doença cardíaca', 'Doença cardíaca'),
-            ('Doença pulmonar (DPOC, asma)', 'Doença pulmonar (DPOC, asma)'),
-            ('Câncer', 'Câncer'),
-            ('Doença renal', 'Doença renal'),
-            ('Artrite/ Artrose', 'Artrite/ Artrose'),
-            ('Depressão', 'Depressão'),
-            ('Ansiedade', 'Ansiedade'),
-            ('Outra doença crônica', 'Outra doença crônica'),
-            ('Nenhuma', 'Nenhuma'),
+            ('Diabetes mellitus', 'Diabetes mellitus'),
+            ('Doença cardíaca (ex.: infarto, angina, insuficiência cardíaca)', 'Doença cardíaca (ex.: infarto, angina, insuficiência cardíaca)'),
+            ('Doença pulmonar crônica (ex.: asma, DPOC)', 'Doença pulmonar crônica (ex.: asma, DPOC)'),
+            ('AVC ou acidente isquêmico transitório', 'AVC ou acidente isquêmico transitório'),
+            ('Câncer (qualquer tipo)', 'Câncer (qualquer tipo)'),
+            ('Depressão ou outro transtorno mental', 'Depressão ou outro transtorno mental'),
+            ('Doença renal crônica', 'Doença renal crônica'),
+            ('Outra', 'Outra'),
         ],
         null=False,
         verbose_name="Histórico de Doenças"
     )
+    
+    outraDoencaCronica = models.CharField(
+        max_length=100,
+        null=False,
+        verbose_name="Outra Doença Crônica (se houver)",
+    )
 
-    # === ETAPA 2: HISTÓRICO MÉDICO E COMPORTAMENTAL ===
-
-    # Internações
-    int_hosp = models.CharField(
+    internacoes = models.CharField(
         max_length=50,
         choices=[
             ('Sim, uma vez', 'Sim, uma vez'),
@@ -166,8 +171,7 @@ class User(models.Model):
         null=False
     )
 
-    # Dificuldade urinária/evacuação
-    dif_uri_evc = models.CharField(
+    dificuldadesUrinarias = models.CharField(
         max_length=50,
         choices=[
             ('Sim', 'Sim'),
@@ -178,8 +182,7 @@ class User(models.Model):
         null=False
     )
 
-    # Incontinência
-    hist_incont = models.CharField(
+    incontinencia = models.CharField(
         max_length=50,
         choices=[
             ('Sim', 'Sim'),
@@ -190,8 +193,7 @@ class User(models.Model):
         null=False
     )
 
-    # Uso de medicamentos
-    uso_medic = models.CharField(
+    usoMedicamentos = models.CharField(
         max_length=50,
         choices=[
             ('Não usa medicamentos', 'Não usa medicamentos'),
@@ -203,8 +205,7 @@ class User(models.Model):
         null=False
     )
 
-    # Toma corretamente
-    seg_trat = models.CharField(
+    tomandoMedicamentos = models.CharField(
         max_length=50,
         choices=[
             ('Sim, conforme prescrito', 'Sim, conforme prescrito'),
@@ -215,8 +216,7 @@ class User(models.Model):
         null=False
     )
 
-    # Última revisão de medicamentos
-    ult_rev_medic = models.CharField(
+    revisaoMedicamentos = models.CharField(
         max_length=50,
         choices=[
             ('Menos de 6 meses', 'Menos de 6 meses'),
@@ -228,8 +228,7 @@ class User(models.Model):
         null=False
     )
 
-    # Desprescrição
-    desprec_medic = models.CharField(
+    desprescricaoMedicamentos = models.CharField(
         max_length=50,
         choices=[
             ('Menos de 6 meses', 'Menos de 6 meses'),
@@ -241,8 +240,7 @@ class User(models.Model):
         null=False
     )
 
-    # Segue tratamento
-    tom_medic = models.CharField(
+    seguindoTratamento = models.CharField(
         max_length=50,
         choices=[
             ('Sempre', 'Sempre'),
@@ -266,7 +264,7 @@ class User(models.Model):
         null=False
     )
 
-    cons_liq = models.CharField(
+    consumoLiquidos = models.CharField(
         max_length=50,
         choices=[
             ('Sim', 'Sim'),
@@ -277,7 +275,7 @@ class User(models.Model):
         null=False
     )
 
-    cons_fibra = models.CharField(
+    consumoFibras = models.CharField(
         max_length=50,
         choices=[
             ('Sim', 'Sim'),
@@ -288,7 +286,7 @@ class User(models.Model):
         null=False
     )
 
-    alim_nutri = models.CharField(
+    alimentacaoVariada = models.CharField(
         max_length=50,
         choices=[
             ('Sim', 'Sim'),
@@ -300,7 +298,7 @@ class User(models.Model):
     )
 
     # === QUEDAS ===
-    adapt_queda = models.CharField(
+    ambienteAdaptado = models.CharField(
         max_length=50,
         choices=[
             ('Sim', 'Sim'),
@@ -311,7 +309,7 @@ class User(models.Model):
         null=False
     )
 
-    sente_seg = models.CharField(
+    seguraCasa = models.CharField(
         max_length=50,
         choices=[
             ('Sim', 'Sim'),
@@ -322,7 +320,7 @@ class User(models.Model):
         null=False
     )
 
-    disp_apoio = models.CharField(
+    dispositivosApoio = models.CharField(
         max_length=50,
         choices=[
             ('Sim', 'Sim'),
@@ -333,13 +331,13 @@ class User(models.Model):
         null=False
     )
 
-    n_quedas = models.PositiveIntegerField(
+    nQuedas = models.IntegerField(
         verbose_name="Quedas (últimos 12 meses) - Quantas?",
         null=False,
         default=0
     )
 
-    les_quedas = models.CharField(
+    quedasLesao = models.CharField(
         max_length=100,
         choices=[
             ('Sim, nenhuma lesão', 'Sim, nenhuma lesão'),
@@ -352,7 +350,7 @@ class User(models.Model):
     )
 
     # === COMPORTAMENTOS DE RISCO ===
-    hist_tabg = models.CharField(
+    tabagismo = models.CharField(
         max_length=60,
         choices=[
             ('Nunca fumou', 'Nunca fumou'),
@@ -365,7 +363,7 @@ class User(models.Model):
         null=False
     )
 
-    hist_alc = models.CharField(
+    alcool = models.CharField(
         max_length=60,
         choices=[
             ('Nunca', 'Nunca'),
@@ -378,7 +376,7 @@ class User(models.Model):
         null=False
     )
 
-    ativ_fis = models.CharField(
+    atividadeFisica = models.CharField(
         max_length=60,
         choices=[
             ('Nunca', 'Nunca'),
@@ -392,7 +390,7 @@ class User(models.Model):
     )
 
     # === SAÚDE BUCAL E SENSORIAL ===
-    saude_bucal = models.CharField(
+    saudeBucal = models.CharField(
         max_length=50,
         choices=[
             ('Adequada (sem queixas)', 'Adequada (sem queixas)'),
@@ -403,7 +401,7 @@ class User(models.Model):
         null=False
     )
 
-    cons_odont = models.CharField(
+    consultasOdonto = models.CharField(
         max_length=50,
         choices=[
             ('Não', 'Não'),
@@ -414,7 +412,7 @@ class User(models.Model):
         null=False
     )
 
-    dif_aud = models.CharField(
+    dificuldadesAuditivas = models.CharField(
         max_length=60,
         choices=[
             ('Sim, uso aparelho auditivo', 'Sim, uso aparelho auditivo'),
@@ -425,7 +423,7 @@ class User(models.Model):
         null=False
     )
 
-    st_visao = models.CharField(
+    visaoInterfere = models.CharField(
         max_length=60,
         choices=[
             ('Não', 'Não'),
@@ -437,7 +435,7 @@ class User(models.Model):
     )
 
     # === VACINAS (MultiSelectField) ===
-    vacinas = MultiSelectField(
+    vacinacao = MultiSelectField(
         choices=[
             ('Gripe (influenza)', 'Gripe (influenza)'),
             ('Pneumocócica', 'Pneumocócica'),
@@ -447,9 +445,10 @@ class User(models.Model):
         null=False,
         blank=True
     )
+    # === ETAPA 3: ATIVIDADES PRAZEROSAS E AGRADÁVEIS ===
 
-    # === ATIVIDADES FUNCIONAIS (arrays no Supabase → MultiSelectField) ===
-    atv_autocuid = MultiSelectField(
+    # === ATIVIDADES FUNCIONAIS ===
+    autocuidado = MultiSelectField(
         choices=[
             ('Alimenta-se sozinho(a)', 'Alimenta-se sozinho(a)'),
             ('Toma banho ou higiene pessoal', 'Toma banho ou higiene pessoal'),
@@ -461,7 +460,7 @@ class User(models.Model):
         verbose_name="Atividades de Autocuidado"
     )
 
-    atv_domes = MultiSelectField(
+    atividadesDomesticas = MultiSelectField(
         choices=[
             ('Prepara refeições', 'Prepara refeições'),
             ('Faz compras de alimentos ou itens de casa', 'Faz compras de alimentos ou itens de casa'),
@@ -474,7 +473,7 @@ class User(models.Model):
         verbose_name="Atividades Domésticas"
     )
 
-    atv_soc_lazer = MultiSelectField(
+    atividadesSociaisLazer = MultiSelectField(
         choices=[
             ('Participa de atividades religiosas, culturais ou sociais', 'Participa de atividades religiosas, culturais ou sociais'),
             ('Mantem hobbies ou passatempos (ex.: jardinagem, música, leitura)', 'Mantem hobbies ou passatempos (ex.: jardinagem, música, leitura)'),
@@ -497,7 +496,7 @@ class User(models.Model):
         verbose_name="Mobilidade"
     )
 
-    func_cognitiv = MultiSelectField(
+    funcoesCognitivas = MultiSelectField(
         choices=[
             ('Lembra compromissos ou conversas recentes', 'Lembra compromissos ou conversas recentes'),
             ('Encontra objetos pessoais', 'Encontra objetos pessoais'),
@@ -509,7 +508,9 @@ class User(models.Model):
         verbose_name="Função Cognitiva"
     )
 
-    atv_soc_ent = MultiSelectField(
+    # === ETAPA 4: ATIVIDADES PRAZEROSAS E AGRADÁVEIS ===
+
+    atividadesSociais = MultiSelectField(
         choices=[
             ('Conversar com amigos ou familiares', 'Conversar com amigos ou familiares'),
             ('Participar de grupos comunitários, associações ou clubes', 'Participar de grupos comunitários, associações ou clubes'),
@@ -520,31 +521,44 @@ class User(models.Model):
         verbose_name="Atividades Sociais de Entretenimento"
     )
 
-    atv_cult = MultiSelectField(
+    atividadesLazer = MultiSelectField(
         choices=[
             ('Ler livros, jornais ou revistas', 'Ler livros, jornais ou revistas'),
             ('Assistir televisão, ouvir rádio, ouvir música', 'Assistir televisão, ouvir rádio, ouvir música'),
             ('Ir ao cinema, teatro ou shows', 'Ir ao cinema, teatro ou shows'),
+            ('Jogar cartas, dominó, jogos de tabuleiro ou eletrônicos', 'Jogar cartas, dominó, jogos de tabuleiro ou eletrônicos'),
+            ('Nenhuma dessas', 'Nenhuma dessas'),
+        ],
+        null=False,
+        verbose_name="Atividades Culturais"
+    )
+    
+    atividadesCulturais = MultiSelectField(
+        choices=[
+            ('Participar de cultos, missas ou grupos religiosos/espirituais', 'Participar de cultos, missas ou grupos religiosos/espirituais'),
+            ('Praticar meditação, oração ou atividades espirituais pessoais', 'Praticar meditação, oração ou atividades espirituais pessoais'),
+            ('Participar de oficinas de arte, música ou dança', 'Participar de oficinas de arte, música ou dança'),
             ('Nenhuma dessas', 'Nenhuma dessas'),
         ],
         null=False,
         verbose_name="Atividades Culturais"
     )
 
-    atv_fis_rec = MultiSelectField(
+    atividadesFisicasRecreativas = MultiSelectField(
         choices=[
             ('Caminhadas ou passeios ao ar livre', 'Caminhadas ou passeios ao ar livre'),
             ('Jardinagem ou cuidar de plantas', 'Jardinagem ou cuidar de plantas'),
-            ('Dança ou ginástica leve', 'Dança ou ginástica leve'),
+            ('Exercícios em grupo (dança, hidroginśtica, yoga)', 'Exercícios em grupo (dança, hidroginśtica, yoga)'),
+            ('Praticar esportes recreativos (bocha, vôlei, bocha, ciclismo, etc.)', 'Praticar esportes recreativos (bocha, vôlei, bocha, ciclismo, etc.)'),
             ('Nenhuma dessas', 'Nenhuma dessas'),
         ],
         null=False,
         verbose_name="Atividades Físicas Recreativas"
     )
 
-    atv_fam = MultiSelectField(
+    atividadesFamiliares = MultiSelectField(
         choices=[
-            ('Passar tempo com netos ou bisnetos', 'Passar tempo com netos ou bisnetos'),
+            ('Estar com filhos/netos', 'Estar com filhos/netos'),
             ('Cuidar de familiares', 'Cuidar de familiares'),
             ('Preparar refeições e compartilhar momentos em família', 'Preparar refeições e compartilhar momentos em família'),
             ('Reunir a família em datas especiais', 'Reunir a família em datas especiais'),
@@ -554,7 +568,7 @@ class User(models.Model):
         verbose_name="Atividades Familiares"
     )
 
-    atv_volunt = MultiSelectField(
+    atividadesVoluntariado = MultiSelectField(
         choices=[
             ('Ajudar vizinhos ou amigos', 'Ajudar vizinhos ou amigos'),
             ('Fazer trabalho voluntário em instituições', 'Fazer trabalho voluntário em instituições'),
