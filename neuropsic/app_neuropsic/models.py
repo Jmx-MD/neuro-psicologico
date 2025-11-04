@@ -148,7 +148,7 @@ class User(models.Model):
             ('Doença renal crônica', 'Doença renal crônica'),
             ('Outra', 'Outra'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Histórico de Doenças"
     )
     
@@ -440,8 +440,8 @@ class User(models.Model):
             ('COVID-19 (reforço)', 'COVID-19 (reforço)'),
         ],
         verbose_name="Vacinação (últimos 12 meses)",
-        null=False,
-        blank=True
+        #null=False,
+        #blank=True
     )
     # === ETAPA 3: ATIVIDADES PRAZEROSAS E AGRADÁVEIS ===
 
@@ -454,7 +454,7 @@ class User(models.Model):
             ('Deita-se/levanta-se da cama ou cadeira', 'Deita-se/levanta-se da cama ou cadeira'),
             ('Nenhuma dificuldade observada', 'Nenhuma dificuldade observada'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Atividades de Autocuidado"
     )
 
@@ -467,7 +467,7 @@ class User(models.Model):
             ('Usa telefone ou celular', 'Usa telefone ou celular'),
             ('Nenhuma dificuldade observada', 'Nenhuma dificuldade observada'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Atividades Domésticas"
     )
 
@@ -479,7 +479,7 @@ class User(models.Model):
             ('Conversa/interage com amigos ou familiares', 'Conversa/interage com amigos ou familiares'),
             ('Nenhuma dificuldade observada', 'Nenhuma dificuldade observada'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Atividades Sociais e Lazer"
     )
 
@@ -490,7 +490,7 @@ class User(models.Model):
             ('Sobe ou desce escadas', 'Sobe ou desce escadas'),
             ('Nenhuma dificuldade observada', 'Nenhuma dificuldade observada'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Mobilidade"
     )
 
@@ -502,7 +502,7 @@ class User(models.Model):
             ('Segue instruções simples', 'Segue instruções simples'),
             ('Nenhuma dificuldade observada', 'Nenhuma dificuldade observada'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Função Cognitiva"
     )
 
@@ -515,7 +515,7 @@ class User(models.Model):
             ('Participar de eventos sociais (festas, encontros, reuniões)', 'Participar de eventos sociais (festas, encontros, reuniões)'),
             ('Nenhuma dessas', 'Nenhuma dessas'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Atividades Sociais de Entretenimento"
     )
 
@@ -527,7 +527,7 @@ class User(models.Model):
             ('Jogar cartas, dominó, jogos de tabuleiro ou eletrônicos', 'Jogar cartas, dominó, jogos de tabuleiro ou eletrônicos'),
             ('Nenhuma dessas', 'Nenhuma dessas'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Atividades Culturais"
     )
     
@@ -538,7 +538,7 @@ class User(models.Model):
             ('Participar de oficinas de arte, música ou dança', 'Participar de oficinas de arte, música ou dança'),
             ('Nenhuma dessas', 'Nenhuma dessas'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Atividades Culturais"
     )
 
@@ -550,7 +550,7 @@ class User(models.Model):
             ('Esportes recreativos (futebol, vôlei, bocha, ciclismo, etc.)', 'Esportes recreativos (futebol, vôlei, bocha, ciclismo, etc.)'),
             ('Nenhuma dessas', 'Nenhuma dessas'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Atividades Físicas Recreativas"
     )
 
@@ -562,7 +562,7 @@ class User(models.Model):
             ('Reunir a família em datas especiais', 'Reunir a família em datas especiais'),
             ('Nenhuma dessas', 'Nenhuma dessas'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Atividades Familiares"
     )
 
@@ -573,7 +573,7 @@ class User(models.Model):
             ('Ensinar ou compartilhar conhecimentos com outras pessoas', 'Ensinar ou compartilhar conhecimentos com outras pessoas'),
             ('Nenhuma dessas', 'Nenhuma dessas'),
         ],
-        null=False,
+        #null=False,
         verbose_name="Atividades Voluntárias"
     )
 
