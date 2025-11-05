@@ -148,13 +148,14 @@ class User(models.Model):
             ('Doença renal crônica', 'Doença renal crônica'),
             ('Outra', 'Outra'),
         ],
-        #null=False,
+        null=False,
         verbose_name="Histórico de Doenças"
     )
     
     outraDoencaCronica = models.CharField(
         max_length=100,
-        null=False,
+        null=True,
+        blank=True,
         verbose_name="Outra Doença Crônica (se houver)",
     )
 
