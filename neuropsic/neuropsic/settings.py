@@ -34,8 +34,8 @@ DATABASES = {
         'HOST': os.getenv('SUPABASE_HOST'),
         'PORT': os.getenv('SUPABASE_PORT', '5432'),
         'OPTIONS': {
-            'sslmode': 'require',  # Supabase exige SSL
-        },
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }
 
