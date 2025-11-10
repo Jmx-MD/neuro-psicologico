@@ -41,21 +41,6 @@ DATABASES = {
 
 ROOT_URLCONF="neuropsic.urls"
 
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'postgres',
-        'USER': 'postgres',
-        'PASSWORD': os.getenv('SUPABASE_PASSWORD'), 
-        'HOST': 'db.zrnaighhtwddnibngduv.supabase.co',
-        'PORT': '5432',
-        'OPTIONS': {
-            'sslmode': 'require',  # Supabase exige SSL
-        },
-    }
-}
-
 LANGUAGE_CODE = "pt-br"
 TIME_ZONE = "UTC"
 USE_I18N = True
