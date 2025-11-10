@@ -27,15 +27,15 @@ INSTALLED_APPS = [
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.mysql',
         'NAME': os.getenv('SUPABASE_DB', 'postgres'),
         'USER': os.getenv('SUPABASE_USER', 'postgres'),
         'PASSWORD': os.getenv('SUPABASE_PASSWORD'),
         'HOST': os.getenv('SUPABASE_HOST'),
         'PORT': os.getenv('SUPABASE_PORT', '5432'),
-        # 'OPTIONS': {
-        #     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        # }
+        'OPTIONS': {
+            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        }
     }
 }
 
