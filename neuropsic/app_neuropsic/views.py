@@ -9,10 +9,6 @@ import json
 load_dotenv() #variaveis de ambiente
 
 
-supabase_url = os.getenv('SUPABASE_URL')
-supabase_key = os.getenv('SUPABASE_ANON_KEY')
-supabase: Client = create_client(supabase_url, supabase_key)
-
 def home(request):
     return render(request, 'usuarios/home.html')
 
