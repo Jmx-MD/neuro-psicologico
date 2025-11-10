@@ -1,0 +1,54 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+
+# ---- Django ----
+*.log
+*.pot
+*.pyc
+db.sqlite3
+media/
+staticfiles/
+local_settings.py
+
+# ---- Environment ----
+.env
+.venv/
+venv/
+env/
+ENV/
+*.env
+
+# ---- IDEs e ferramentas ----
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ---- PyInstaller ----
+# Arquivos gerados ao empacotar a aplicação
+*.spec
+build/
+dist/
+
+# ---- Coverage e testes ----
+.coverage
+htmlcov/
+.tox/
+nosetests.xml
+coverage.xml
+*.cover
+.pytest_cache/
+
+# ---- Migrations (opcional, remova se quiser versionar) ----
+# Descomente as linhas abaixo se não quiser versionar migrations iniciais
+# */migrations/
+# !*/migrations/__init__.py
+
+# ---- Arquivos temporários ----
+*.bak
+*.tmp
+*.log
+.DS_Store
+Thumbs.db
