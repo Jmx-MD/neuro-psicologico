@@ -104,6 +104,7 @@ class User(models.Model):
         choices=[
             ('Aposentadoria/pensão', 'Aposentadoria/pensão'),
             ('Trabalho remunerado', 'Trabalho remunerado'),
+            ('Apoio familiar', 'Apoio familiar'),
             ('Benefícios sociais (ex.: Programas governamentais como Bolsa Família ou equivalente)', 'Benefícios sociais (ex.: Programas governamentais como Bolsa Família ou equivalente)'),
             ('Outro', 'Outro'),
         ],
