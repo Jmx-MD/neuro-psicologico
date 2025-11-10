@@ -109,7 +109,8 @@ class User(models.Model):
             ('Outro', 'Outro'),
         ],
         null=False,
-        verbose_name="Fonte de Renda"
+        verbose_name="Fonte de Renda",
+        max_length=255
     )
 
     planosSaude = models.CharField(
@@ -121,6 +122,7 @@ class User(models.Model):
         ],
         null=False,
         verbose_name="Plano de Saúde"
+        max_length=255
     )
 
     condicoesSaude = models.CharField(
