@@ -121,7 +121,7 @@ class User(models.Model):
             ('Nenhum', 'Nenhum'),
         ],
         null=False,
-        verbose_name="Plano de Saúde"
+        verbose_name="Plano de Saúde",
         max_length=255
     )
 

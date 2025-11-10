@@ -23,21 +23,30 @@ INSTALLED_APPS = [
     'app_neuropsic'
 ]
 
-
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': os.getenv('SUPABASE_DB', 'postgres'),
-        'USER': os.getenv('SUPABASE_USER', 'postgres'),
-        'PASSWORD': os.getenv('SUPABASE_PASSWORD'),
-        'HOST': os.getenv('SUPABASE_HOST'),
-        'PORT': os.getenv('SUPABASE_PORT', '5432'),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+if os.getenv('DEPLOY', False):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.mysql',
+            'NAME': os.getenv('SUPABASE_DB', 'postgres'),
+            'USER': os.getenv('SUPABASE_USER', 'postgres'),
+            'PASSWORD': os.getenv('SUPABASE_PASSWORD'),
+            'HOST': os.getenv('SUPABASE_HOST'),
+            'PORT': os.getenv('SUPABASE_PORT', '5432'),
+            'OPTIONS': {
+                'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+            }
         }
     }
-}
+else:
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': BASE_DIR / 'db.sqlite3',
+            'TEST': {
+                'NAME': ':memory:',  # banco de teste temporário
+            }
+        }
+    }
 
 ROOT_URLCONF="neuropsic.urls"
 
