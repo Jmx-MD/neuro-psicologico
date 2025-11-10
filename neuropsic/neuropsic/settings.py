@@ -33,9 +33,9 @@ DATABASES = {
         'PASSWORD': os.getenv('SUPABASE_PASSWORD'),
         'HOST': os.getenv('SUPABASE_HOST'),
         'PORT': os.getenv('SUPABASE_PORT', '5432'),
-        'OPTIONS': {
-            'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
-        }
+        # 'OPTIONS': {
+        #     'init_command': "SET sql_mode='STRICT_TRANS_TABLES'",
+        # }
     }
 }
 
