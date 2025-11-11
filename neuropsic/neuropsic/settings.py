@@ -117,7 +117,7 @@ TEMPLATES = [
     }
 ]
 
-DEBUG=True
+DEBUG=False
 
 WSGI_APPLICATION = 'neuropsic.wsgi.application'
 
