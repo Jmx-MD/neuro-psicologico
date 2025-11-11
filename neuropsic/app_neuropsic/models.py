@@ -81,7 +81,7 @@ class User(models.Model):
             ('Aposentadoria/pensão', 'Aposentadoria/pensão'),
             ('Trabalho remunerado', 'Trabalho remunerado'),
             ('Apoio familiar', 'Apoio familiar'),
-            ('Benefícios sociais', 'Benefícios sociais'),
+            ('Benefícios sociais (ex.: Programas governamentais como Bolsa Família ou equivalente)', 'Benefícios sociais (ex.: Programas governamentais como Bolsa Família ou equivalente)'),
             ('Outro', 'Outro'),
         ],
         verbose_name="Fonte de Renda"
