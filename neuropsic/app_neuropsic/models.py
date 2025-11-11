@@ -588,8 +588,6 @@ class User(models.Model):
         db_table = 'questionario'  # opcional: nome exato da tabela no Supabase
         verbose_name = "Questionário Completo"
         
-    def __str__(self):
-        return self.nome      
 
 class Adm(models.Model):
     id_administracao = models.AutoField(primary_key=True)
