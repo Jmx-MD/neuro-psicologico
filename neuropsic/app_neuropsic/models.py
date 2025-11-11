@@ -139,7 +139,13 @@ class User(models.Model):
         ('Não', 'Não'),
     ]
 
-    DESPRESCRICAO_MEDICAMENTOS_CHOICES = REVISAO_MEDICAMENTOS_CHOICES
+    DESPRESCRICAO_MEDICAMENTOS_CHOICES = [
+        ('Menos de 6 meses', 'Menos de 6 meses'),
+        ('Entre 6 meses e 1 ano', 'Entre 6 meses e 1 ano'),
+        ('Mais de 1 ano', 'Mais de 1 ano'),
+        ('Não sei', 'Não sei'),
+        ('Não', 'Não'),
+    ]
 
     SEGUINDO_TRATAMENTO_CHOICES = [
         ('Sempre', 'Sempre'),

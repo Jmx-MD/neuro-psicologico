@@ -24,6 +24,7 @@ class UserSerializer(serializers.ModelSerializer):
             "Doença renal crônica",
             "Depressão ou outro transtorno mental",
             "Outra",
+            "Nenhuma dessas",
         ],
         "vacinacao": [
             "Gripe (influenza)",
