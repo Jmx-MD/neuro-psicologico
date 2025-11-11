@@ -581,9 +581,6 @@ class User(models.Model):
         verbose_name="Atividades Voluntárias"
     )
 
-    def __str__(self):
-        return f"Questionário ID {self.id}"
-
     class Meta:
         db_table = 'questionario'  # opcional: nome exato da tabela no Supabase
         verbose_name = "Questionário Completo"
