@@ -136,6 +136,7 @@ class User(models.Model):
         ('Entre 6 meses e 1 ano', 'Entre 6 meses e 1 ano'),
         ('Mais de 1 ano', 'Mais de 1 ano'),
         ('Não sei', 'Não sei'),
+        ('Não', 'Não'),
     ]
 
     DESPRESCRICAO_MEDICAMENTOS_CHOICES = REVISAO_MEDICAMENTOS_CHOICES
@@ -262,7 +263,7 @@ class User(models.Model):
     visaoInterfere = models.CharField(max_length=80, choices=VISAO_INTERFERE_CHOICES)
 
     # === HISTÓRICO MÉDICO ===
-    doencasCronicas = models.JSONField(default=list, verbose_name="Histórico de Doenças")
+    doencasCronicas = models.JSONField(default=list, verbose_name="Histórico de Doenças", blank=True, null=True)
     outraDoencaCronica = models.CharField(max_length=100, null=True, blank=True)
 
     internacoes = models.CharField(
