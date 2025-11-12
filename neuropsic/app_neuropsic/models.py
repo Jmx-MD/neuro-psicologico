@@ -4,6 +4,8 @@ from datetime import date
 class User(models.Model):
     id_user = models.AutoField(primary_key=True)
 
+    cpf = models.CharField(max_length=14, unique=True, verbose_name="CPF")
+
     # === ETAPA 1: IDENTIFICAÇÃO ===
     idade = models.PositiveIntegerField(verbose_name="Idade (anos)", null=False)
 
